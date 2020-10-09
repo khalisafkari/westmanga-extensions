@@ -24,3 +24,7 @@ export interface HomeResults {
 export const Home = async ({ page = 1 }:{ page?: number }):Promise<any> => {
   return  module.getHome(page)
 }
+
+export const TotalPageHome = async ():Promise<number> => {
+  return module.TotalPageHome()
+}

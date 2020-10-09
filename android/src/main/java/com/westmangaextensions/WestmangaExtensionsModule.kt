@@ -4,10 +4,8 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.Promise
-import com.westmangaextensions.utils.Home
+import com.westmangaextensions.utils.*
 import com.westmangaextensions.utils.List
-import com.westmangaextensions.utils.Posts
-import com.westmangaextensions.utils.PostsView
 import java.io.IOException
 
 class WestmangaExtensionsModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
@@ -19,10 +17,10 @@ class WestmangaExtensionsModule(reactContext: ReactApplicationContext) : ReactCo
     @ReactMethod
     fun multiply(page: Int,promise: Promise) {
       try {
-        val data = List().getList()
+        val data = API().getCountryCode()
         promise.resolve(data)
       } catch (e:IOException) {
-        promise.resolve(e)
+        promise.reject(e)
       }
     }
 
@@ -81,6 +79,16 @@ class WestmangaExtensionsModule(reactContext: ReactApplicationContext) : ReactCo
     fun getList(page: Int,search: String,genre: String,promise: Promise) {
       try {
           val data = List().getList(page, search, genre)
+          promise.resolve(data)
+      } catch (e:IOException) {
+          promise.reject(e)
+      }
+    }
+
+    @ReactMethod
+    fun getCountry(promise: Promise) {
+      try {
+          val data = API().getCountryCode()
           promise.resolve(data)
       } catch (e:IOException) {
           promise.reject(e)
