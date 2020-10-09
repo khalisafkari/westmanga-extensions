@@ -15,6 +15,7 @@ export {
 } from './Posts'
 
 export {
-  getCountry,
   htmlConverter
 }
+
+export default getCountry;
