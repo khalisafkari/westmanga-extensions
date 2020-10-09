@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import WestmangaExtensions from 'westmanga-extensions';
+import Extensions from 'westmanga-extensions';
 
 export default function App() {
 
   React.useEffect(() => {
-    WestmangaExtensions.multiply().then(console.log);
-  }, []);
+    Extensions().then((res) => console.log(res))
+  },[])
 
   return <View/>
 

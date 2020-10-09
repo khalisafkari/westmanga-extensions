@@ -1,9 +1,9 @@
-import { NativeModules } from 'react-native';
+import module from './module'
+export {
+  Home,
+  HomeResults
+} from './Home'
 
-type WestmangaExtensionsType = {
-  multiply(): Promise<any>;
-};
-
-const { WestmangaExtensions } = NativeModules;
-
-export default WestmangaExtensions as WestmangaExtensionsType;
+export default async () => {
+  return module.multiply(1)
+}

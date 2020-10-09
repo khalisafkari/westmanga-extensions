@@ -13,9 +13,9 @@ class Home {
   private val url = API()
 
   @Throws(IOException::class)
-  fun getHome(): ReadableArray {
+  fun getHome(page: Int? = 1): ReadableArray {
     val array = WritableNativeArray()
-    val html = url.run("https://westmanga.info/");
+    val html = url.run("https://westmanga.info/page/$page/");
     val document = Jsoup.parse(html)
     for (element in document.select(".item_1.items .item")) {
         array.pushMap(parse(element))
