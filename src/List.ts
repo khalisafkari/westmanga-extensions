@@ -23,6 +23,6 @@ export interface getList {
   total: number;
 }
 
-export const getList = async ({ page = 1,search = "",genre = "" }:{ page?: number,search?: string,genre: string }):Promise<getList> => {
+export const getList = async ({ page = 1,search = "",genre = "" }:{ page?: number,search?: string,genre?: string }):Promise<getList> => {
   return module.getList(page,search,genre)
 }

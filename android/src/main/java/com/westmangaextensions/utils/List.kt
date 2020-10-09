@@ -8,6 +8,7 @@ import org.jsoup.Jsoup
 import org.jsoup.select.Elements
 import java.io.IOException
 
+
 class List {
 
   private val url = API()
@@ -42,7 +43,12 @@ class List {
       array.pushMap(map)
     }
     mp.putArray("list",array)
-    mp.putInt("total",document.select(".paginado ul li").last().select("a").attr("href").replace("\\D+".toRegex(RegexOption.MULTILINE),"").toInt())
+    if (document.select(".paginado ul li").last().select("a").attr("href").isEmpty()) {
+      mp.putInt("total",document.select(".paginado ul li").last().select("a").text().toInt())
+    } else {
+      mp.putInt("total",document.select(".paginado ul li").last().select("a").attr("href").replace("\\D+".toRegex(RegexOption.MULTILINE),"").toInt())
+    }
+
     return mp
   }
 
