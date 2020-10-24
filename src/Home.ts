@@ -5,7 +5,7 @@ export interface HomeResults {
   image: string;
   hot: boolean;
   type: string;
-  boxinfo:{
+  boxinfo: {
     tt: string;
     ttx: string;
     imdbs: string;
@@ -13,18 +13,18 @@ export interface HomeResults {
     score: string;
     status: string;
   };
-  fixyear:{
+  fixyear: {
     title: string;
     time: string;
     last_id: string;
     last_title: string;
-  }
+  };
 }
 
-export const Home = async ({ page = 1 }:{ page?: number }):Promise<any> => {
-  return  module.getHome(page)
-}
+export const Home = async ({ page = 1 }: { page?: number }): Promise<any> => {
+  return module.getHome(page);
+};
 
-export const TotalPageHome = async ():Promise<number> => {
-  return module.TotalPageHome()
-}
+export const TotalPageHome = async (): Promise<number> => {
+  return module.TotalPageHome();
+};
