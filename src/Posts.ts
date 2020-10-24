@@ -14,7 +14,7 @@ export interface getPosts {
     genre: Array<{
       id: string;
       title: string;
-    }>
+    }>;
   };
   sinopsis: string;
   list: Array<{
@@ -22,22 +22,22 @@ export interface getPosts {
     title: string;
     download: string;
     time: string;
-  }>
+  }>;
 }
 
 export const getPosts = async (url: string): Promise<getPosts> => {
-  return module.getPosts(url)
-}
+  return module.getPosts(url);
+};
 
 export interface getPostsView {
-  image: string[]
+  image: string[];
   prev: string;
   next: string;
 }
 
 export const getPostsView = async (url: string): Promise<getPostsView> => {
-  return module.getPostsView(url)
-}
+  return module.getPostsView(url);
+};
 
 export interface getPostsViewHtml {
   html: string;
@@ -45,16 +45,18 @@ export interface getPostsViewHtml {
   prev: string;
 }
 
-export const getPostsViewHtml = async (url: string): Promise<getPostsViewHtml> => {
+export const getPostsViewHtml = async (
+  url: string
+): Promise<getPostsViewHtml> => {
   try {
-    const { image,next,prev } = await getPostsView(url);
+    const { image, next, prev } = await getPostsView(url);
     const data: getPostsViewHtml = {
-      html:htmlConverter(image),
+      html: htmlConverter(image),
       next,
-      prev
-    }
-    return data
+      prev,
+    };
+    return data;
   } catch (e) {
-      throw new Error(e)
+    throw new Error(e);
   }
-}
+};

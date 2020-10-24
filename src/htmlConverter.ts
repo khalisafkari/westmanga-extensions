@@ -2,7 +2,7 @@ const htmlConverter = (state?: string[] | any) => {
   const todos: string[] = [];
   for (let i = 0; i < state?.length; i++) {
     todos.push(
-      `<img class="lzy_img" src="https://loveheaven.net/app/manga/themes/default/assets/images/lazy-load.gif.pagespeed.ce.DNnV78SNYS.gif" data-src="${state[i]}" />`,
+      `<img class="lzy_img" src="https://loveheaven.net/app/manga/themes/default/assets/images/lazy-load.gif.pagespeed.ce.DNnV78SNYS.gif" data-src="${state[i]}" />`
     );
   }
   return `
