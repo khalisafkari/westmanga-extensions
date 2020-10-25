@@ -76,9 +76,9 @@ class WestmangaExtensionsModule(reactContext: ReactApplicationContext) : ReactCo
     }
 
     @ReactMethod
-    fun getList(page: Int,search: String,genre: String,promise: Promise) {
+    fun getList(url: String,promise: Promise) {
       try {
-          val data = List().getList(page, search, genre)
+          val data = List().getList(url)
           promise.resolve(data)
       } catch (e:IOException) {
           promise.reject(e)

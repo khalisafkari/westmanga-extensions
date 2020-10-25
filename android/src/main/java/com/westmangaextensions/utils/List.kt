@@ -28,10 +28,10 @@ class List {
   }
 
   @Throws(IOException::class)
-  fun getList(page: Int = 1,search: String = "",genre: String = ""):ReadableMap {
+  fun getList(link: String):ReadableMap {
     val array = WritableNativeArray()
     val mp = WritableNativeMap()
-    val html = url.run("https://westmanga.info/page/$page/?s=$search&post_type=manga&genre=$genre")
+    val html = url.run(link)
     val document = Jsoup.parse(html)
     for (element in document.select(".result-search")) {
       val map = WritableNativeMap()

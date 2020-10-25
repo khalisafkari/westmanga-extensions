@@ -32,5 +32,7 @@ export const getList = async ({
   search?: string;
   genre?: string;
 }): Promise<getList> => {
-  return module.getList(page, search, genre);
+  return module.getList(
+    `https://westmanga.info/page/${page}/?s=${search}&post_type=manga&genre=${genre}`
+  );
 };
