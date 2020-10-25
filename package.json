@@ -1,6 +1,6 @@
 {
   "name": "westmanga-extensions",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "westmanga-extensions",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
