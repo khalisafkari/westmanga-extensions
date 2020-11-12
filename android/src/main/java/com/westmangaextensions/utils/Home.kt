@@ -7,20 +7,36 @@ import com.facebook.react.bridge.WritableNativeMap
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
 import java.io.IOException
+import java.lang.Exception
+
 
 class Home {
 
   private val url = API()
 
   @Throws(IOException::class)
-  fun getHome(page: Int? = 1): ReadableArray {
-    val array = WritableNativeArray()
-    val html = url.run("https://westmanga.info/page/$page/");
-    val document = Jsoup.parse(html)
-    for (element in document.select(".item_1.items .item")) {
-        array.pushMap(parse(element))
+  fun getHome(page: Int? = 1): ReadableArray? {
+    try {
+      val array = WritableNativeArray()
+      val html = url.run("https://westmanga.info/page/$page/");
+      val document = Jsoup.parse(html)
+      for (element in document.select(".item_1.items .item")) {  array.pushMap(parse(element)) }
+      return array;
+    } catch (e: IOException) {
+      throw e;
     }
-    return array
+//      try {
+//        val array = WritableNativeArray()
+//        val html = url.run("https://westmanga.info/page/$page/");
+//        val document = Jsoup.parse(html)
+//        for (element in document.select(".item_1.items .item")) {
+//          array.pushMap(parse(element))
+//        }
+//        return array
+//      } catch (e: Exception) {
+//        e.printStackTrace()
+//      }
+//      return null;
   }
 
   @Throws(IOException::class)

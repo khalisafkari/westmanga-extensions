@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
-import { getList } from 'westmanga-extensions';
+import { Home } from 'westmanga-extensions';
 
 export default function App() {
   React.useEffect(() => {
-    getList({ page: 6 }).then(console.log);
+    Home({}).then(console.log);
   }, []);
 
   return (
