@@ -29,8 +29,8 @@ class WestmangaExtensionsModule(reactContext: ReactApplicationContext) : ReactCo
       try {
         val data = Home().getHome(page)
         promise.resolve(data)
-      } catch (e:IOException) {
-        promise.resolve(e)
+      } catch (e: IOException) {
+        promise.reject(e)
       }
     }
 
