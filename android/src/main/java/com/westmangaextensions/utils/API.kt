@@ -6,7 +6,6 @@ import com.facebook.react.bridge.WritableNativeMap
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException
-import java.util.concurrent.TimeUnit
 
 
 class API {
@@ -28,10 +27,10 @@ class API {
       val request = Request.Builder().url("https://api-geolocation.zeit.sh").build()
       val response = client.newCall(request).execute().body()!!.string()
       val parse = JSON.parseObject(response)
-      map.putString("country",parse.getString("country").toString())
-      map.putString("city", parse.getString("city").toString())
-      map.putDouble("lat",parse.getDouble("lat").toDouble())
-      map.putDouble("lon",parse.getDouble("lon").toDouble())
+      map.putString("country",parse.getString("country")?: "none")
+      map.putString("city", parse.getString("city")?: "none")
+      map.putDouble("lat",parse.getDouble("lat")?: 0.0)
+      map.putDouble("lon",parse.getDouble("lon")?: 0.0)
       return map
     }
 }
